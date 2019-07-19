@@ -56,7 +56,7 @@ class Tree {
   * \return The index of new leaf.
   */
   int Split(int leaf, int feature, int real_feature, uint32_t threshold_bin,
-            double threshold_double, double left_value, double right_value,
+            float threshold_double, double left_value, double right_value,
             int left_cnt, int right_cnt, float gain, MissingType missing_type, bool default_left);
 
   /*!
