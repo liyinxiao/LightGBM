@@ -618,7 +618,7 @@ int32_t SerialTreeLearner::ForceSplits(Tree* tree, Json& forced_split_json, int*
 
     if (!left.is_null()) {
       const int left_feature = left["feature"].int_value();
-      const double left_threshold_double = left["threshold"].number_value();
+      const float left_threshold_double = left["threshold"].number_value();
       const int left_inner_feature_index = train_data_->InnerFeatureIndex(left_feature);
       const uint32_t left_threshold = train_data_->BinThreshold(
               left_inner_feature_index, left_threshold_double);
@@ -639,7 +639,7 @@ int32_t SerialTreeLearner::ForceSplits(Tree* tree, Json& forced_split_json, int*
 
     if (!right.is_null()) {
       const int right_feature = right["feature"].int_value();
-      const double right_threshold_double = right["threshold"].number_value();
+      const float right_threshold_double = right["threshold"].number_value();
       const int right_inner_feature_index = train_data_->InnerFeatureIndex(right_feature);
       const uint32_t right_threshold = train_data_->BinThreshold(
               right_inner_feature_index, right_threshold_double);
@@ -669,7 +669,7 @@ int32_t SerialTreeLearner::ForceSplits(Tree* tree, Json& forced_split_json, int*
     SplitInfo current_split_info = forceSplitMap[current_leaf];
     const int inner_feature_index = train_data_->InnerFeatureIndex(
             current_split_info.feature);
-    auto threshold_double = train_data_->RealThreshold(
+    float threshold_double = train_data_->RealThreshold(
             inner_feature_index, current_split_info.threshold);
 
     // split tree, will return right leaf
@@ -781,7 +781,7 @@ void SerialTreeLearner::Split(Tree* tree, int best_leaf, int* left_leaf, int* ri
   *left_leaf = best_leaf;
   bool is_numerical_split = train_data_->FeatureBinMapper(inner_feature_index)->bin_type() == BinType::NumericalBin;
   if (is_numerical_split) {
-    auto threshold_double = train_data_->RealThreshold(inner_feature_index, best_split_info.threshold);
+    float threshold_double = train_data_->RealThreshold(inner_feature_index, best_split_info.threshold);
     // split tree, will return right leaf
     *right_leaf = tree->Split(best_leaf,
                               inner_feature_index,
