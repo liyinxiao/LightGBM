@@ -368,7 +368,7 @@ class Tree {
   /*! \brief A non-leaf node's split threshold in bin */
   std::vector<uint32_t> threshold_in_bin_;
   /*! \brief A non-leaf node's split threshold in feature value */
-  std::vector<double> threshold_;
+  std::vector<float> threshold_;
   int num_cat_;
   std::vector<int> cat_boundaries_inner_;
   std::vector<uint32_t> cat_threshold_inner_;
