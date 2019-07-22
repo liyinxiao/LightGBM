@@ -220,7 +220,7 @@ std::string Tree::ToString() const {
   str_buf << "right_child="
     << Common::ArrayToStringFast(right_child_, num_leaves_ - 1) << '\n';
   str_buf << "leaf_value="
-    << Common::ArrayToString(leaf_value_, num_leaves_) << '\n';
+    << Common::ArrayToStringFast(leaf_value_, num_leaves_) << '\n';
   str_buf << "leaf_count="
     << Common::ArrayToStringFast(leaf_count_, num_leaves_) << '\n';
   str_buf << "internal_value="
@@ -502,7 +502,7 @@ Tree::Tree(const char* str, size_t* used_len) {
   Common::Atoi(key_vals["num_cat"].c_str(), &num_cat_);
 
   if (key_vals.count("leaf_value")) {
-    leaf_value_ = Common::StringToArray<double>(key_vals["leaf_value"], num_leaves_);
+    leaf_value_ = Common::StringToArrayFast<Float>(key_vals["leaf_value"], num_leaves_);
   } else {
     Log::Fatal("Tree model string format error, should contain leaf_value field");
   }
