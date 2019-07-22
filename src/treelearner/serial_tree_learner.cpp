@@ -669,7 +669,7 @@ int32_t SerialTreeLearner::ForceSplits(Tree* tree, Json& forced_split_json, int*
     SplitInfo current_split_info = forceSplitMap[current_leaf];
     const int inner_feature_index = train_data_->InnerFeatureIndex(
             current_split_info.feature);
-    float threshold_double = train_data_->RealThreshold(
+    auto threshold_double = train_data_->RealThreshold(
             inner_feature_index, current_split_info.threshold);
 
     // split tree, will return right leaf
@@ -781,7 +781,7 @@ void SerialTreeLearner::Split(Tree* tree, int best_leaf, int* left_leaf, int* ri
   *left_leaf = best_leaf;
   bool is_numerical_split = train_data_->FeatureBinMapper(inner_feature_index)->bin_type() == BinType::NumericalBin;
   if (is_numerical_split) {
-    float threshold_double = train_data_->RealThreshold(inner_feature_index, best_split_info.threshold);
+    auto threshold_double = train_data_->RealThreshold(inner_feature_index, best_split_info.threshold);
     // split tree, will return right leaf
     *right_leaf = tree->Split(best_leaf,
                               inner_feature_index,
