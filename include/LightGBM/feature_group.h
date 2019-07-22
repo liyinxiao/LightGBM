@@ -185,7 +185,7 @@ class FeatureGroup {
   * \param bin
   * \return FeatureGroup value of this bin
   */
-  inline double BinToValue(int sub_feature_idx, uint32_t bin) const {
+  inline float BinToValue(int sub_feature_idx, uint32_t bin) const {
     return bin_mappers_[sub_feature_idx]->BinToValue(bin);
   }
 
