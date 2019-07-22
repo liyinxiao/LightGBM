@@ -212,7 +212,7 @@ std::string Tree::ToString() const {
   str_buf << "split_gain="
     << Common::ArrayToStringFast(split_gain_, num_leaves_ - 1) << '\n';
   str_buf << "threshold="
-    << Common::ArrayToString(threshold_, num_leaves_ - 1) << '\n';
+    << Common::ArrayToStringFast(threshold_, num_leaves_ - 1) << '\n';
   str_buf << "decision_type="
     << Common::ArrayToStringFast(Common::ArrayCast<int8_t, int>(decision_type_), num_leaves_ - 1) << '\n';
   str_buf << "left_child="
@@ -534,7 +534,7 @@ Tree::Tree(const char* str, size_t* used_len) {
   }
 
   if (key_vals.count("threshold")) {
-    threshold_ = Common::StringToArray<double>(key_vals["threshold"], num_leaves_ - 1);
+    threshold_ = Common::StringToArray<float>(key_vals["threshold"], num_leaves_ - 1);
   } else {
     Log::Fatal("Tree model string format error, should contain threshold field");
   }
