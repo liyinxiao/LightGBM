@@ -502,7 +502,7 @@ class Dataset {
     return feature_groups_[group]->FeatureGroupIterator();
   }
 
-  inline double RealThreshold(int i, uint32_t threshold) const {
+  inline float RealThreshold(int i, uint32_t threshold) const {
     const int group = feature2group_[i];
     const int sub_feature = feature2subfeature_[i];
     return feature_groups_[group]->bin_mappers_[sub_feature]->BinToValue(threshold);
