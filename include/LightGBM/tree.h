@@ -382,7 +382,7 @@ class Tree {
   /*! \brief The parent of leaf */
   std::vector<int> leaf_parent_;
   /*! \brief Output of leaves */
-  std::vector<double> leaf_value_;
+  std::vector<float> leaf_value_;
   /*! \brief DataCount of leaves */
   std::vector<int> leaf_count_;
   /*! \brief Output of non-leaf nodes */
