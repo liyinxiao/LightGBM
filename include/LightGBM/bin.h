@@ -110,7 +110,7 @@ class BinMapper {
   * \param bin
   * \return Feature value of this bin
   */
-  inline double BinToValue(uint32_t bin) const {
+  inline float BinToValue(uint32_t bin) const {
     if (bin_type_ == BinType::NumericalBin) {
       return bin_upper_bound_[bin];
     } else {
@@ -126,7 +126,7 @@ class BinMapper {
   * \param value
   * \return bin for this feature value
   */
-  inline uint32_t ValueToBin(double value) const;
+  inline uint32_t ValueToBin(float value) const;
 
   /*!
   * \brief Get the default bin when value is 0
@@ -458,7 +458,7 @@ class Bin {
   virtual Bin* Clone() = 0;
 };
 
-inline uint32_t BinMapper::ValueToBin(double value) const {
+inline uint32_t BinMapper::ValueToBin(float value) const {
   if (std::isnan(value)) {
     if (missing_type_ == MissingType::NaN) {
       return num_bin_ - 1;
